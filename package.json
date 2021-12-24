@@ -1,0 +1,22 @@
+{
+  "name": "manage-ur-team",
+  "version": "1.0.0",
+  "description": "Initial commit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mnshaun24/manage-ur-team.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mnshaun24/manage-ur-team/issues"
+  },
+  "homepage": "https://github.com/mnshaun24/manage-ur-team#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
