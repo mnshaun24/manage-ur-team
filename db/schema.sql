@@ -17,11 +17,12 @@ CONSTRAINT fk_departments FOREIGN KEY (department_id) REFERENCES departments(id)
 
 -- include employee table with additional job title and salary information in case they differ from the standard set in roles
 CREATE TABLE employees (
-id INTEGER AUTO_INCREMENT PRIMARY KEY,
+id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
 first_name VARCHAR(30) NOT NULL,
 last_name VARCHAR(30) NOT NULL,
 job_title VARCHAR(50),
 role_id INTEGER NOT NULL,
 manager_id INTEGER DEFAULT NULL,
-CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES roles(id)
+CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES roles(id),
+CONSTRAINT fk_manager_id FOREIGN KEY (manager_id) REFERENCES employees(id)
 );
