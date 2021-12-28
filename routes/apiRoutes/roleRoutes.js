@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../../db/connection");
 
-// chooses to view all departments
+// chooses to view all roles
 router.get("/roles", (req, res) => {
     const sql = `SELECT * FROM roles`;
 
@@ -18,13 +18,13 @@ router.get("/roles", (req, res) => {
     });
 });
 
-// choose to add a department
+// choose to add a role
 router.post("/roles", ({ body }, res) => {
-    const sql = `INSERT INTO roles (id, title, salary) VALUES (?, ?, ?)`;
+    const sql = `INSERT INTO roles (title, salary, department_id) VALUES (?, ?, ?)`;
     const params = [
-        body.id,
         body.title,
-        body.salary
+        body.salary, 
+        body.department_id
     ];
 
 db.query(sql, params, (err, result) => {
