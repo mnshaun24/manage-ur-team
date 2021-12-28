@@ -60,4 +60,4 @@ router.put("/employees/:id", (req, res) => {
     });
 });
 
-module.exports = router;
+module.exports = Employee;

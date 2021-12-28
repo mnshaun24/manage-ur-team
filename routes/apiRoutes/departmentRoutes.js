@@ -1,40 +1,46 @@
-const express = require("express");
-const router = express.Router();
+// const express = require("express");
+// const router = express.Router();
 const db = require("../../db/connection");
+const cTable = require("console.table");
+const inquirer = require("inquirer");
+
+
+// build the class
+class Department {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name
+    }
+};
 
 // chooses to view all departments
-router.get("/departments", (req, res) => {
+function viewDept() {
     const sql = `SELECT * FROM departments`;
 
-    db.query(sql, (err, rows) => {
-        if (err) {
-            rest.status(500).json({ error: err.message });
-            return;
-        }
-        res.json({
-            message: "success",
-            data: rows
+    db.query(sql, (rows) => {
+        console.table(rows);
         });
-    });
-});
+    }
 
 // choose to add a department
-router.post("/departments", ({ body }, res) => {
-    const sql = `INSERT INTO departments (department_name) VALUES (?)`;
-    const params = [
-        body.department_name
-    ];
+function addDept() {
+    return inquirer.prompt ([
+        {
+            type: "input",
+            name: "newDept",
+            message: "What is the name of the new department?"
+        }
+    ])
 
-db.query(sql, params, (err, result) => {
-    if (err) {
-        res.status(400).json({ error: err.message });
-        return;
-    }
-    res.json({
-        message: "success",
-        data: body
-    });
-});
-});
+    .then (departmentData => {
+        const sql = `INSERT INTO departments (department_name) VALUES (?)`;
 
-module.exports = router;
+        db.query(sql, departmentData.newDept, (err, res) => {
+            if (err) throw (err);
+            console.log("You have added" + departmentData.newDept);
+        })
+    })
+};
+
+module.exports = Department;
+module.exports = { viewDept, addDept };
