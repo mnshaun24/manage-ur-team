@@ -21,8 +21,9 @@ id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
 first_name VARCHAR(30) NOT NULL,
 last_name VARCHAR(30) NOT NULL,
 job_title VARCHAR(50),
-role_id INTEGER NOT NULL,
+role_id INTEGER DEFAULT NULL,   
+-- role id should be set to not null but I don't know how to get that to work at the moment so come back to it
 manager_id INTEGER DEFAULT NULL,
-CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES roles(id),
+-- CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES roles(id), associated with role id above can't figure out how to get this to work
 CONSTRAINT fk_manager_id FOREIGN KEY (manager_id) REFERENCES employees(id)
 );

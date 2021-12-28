@@ -1,5 +1,7 @@
 // require necessary files
 const express = require('express');
+const db = require("./db/connection");
+const apiRoutes = require("./routes/apiRoutes/routeIndex");
 
 // get port ready for use
 const PORT = process.env.PORT || 3001;
@@ -26,8 +28,3 @@ db.connect(err => {
       console.log(`Server running on port ${PORT}`);
     });
   });
-
-// need to include dept. role. employee
-// dept = names and id
-// roles = job title, role id, overseeing_dept, salary
-// employee = id, first name, last name, job title, department, salary, reporting manager
