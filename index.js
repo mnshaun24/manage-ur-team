@@ -18,8 +18,8 @@ const startFunc = () => {
     .then(userChoice => {
         if (userChoice.chooseAction === "View all departments") {
             viewDept();
-            console.log("Push any button to make another selection.")
-            // startFunc();
+            startFunc();
+            console.log("Hit an arrow key to return to the selection menu.")
         } else if (userChoice.chooseAction === "View all roles") {
             viewRole();
         } else if (userChoice.chooseAction === "View all employees") {
@@ -38,4 +38,3 @@ const startFunc = () => {
 };
 
 startFunc();
-

@@ -17,7 +17,8 @@ class Department {
 function viewDept() {
     const sql = `SELECT * FROM departments`;
 
-    db.query(sql, (rows) => {
+    db.query(sql, (err, rows) => {
+        if (err) throw err;
         console.table(rows);
         });
     }
@@ -36,7 +37,7 @@ function addDept() {
         const sql = `INSERT INTO departments (department_name) VALUES (?)`;
 
         db.query(sql, departmentData.newDept, (err, res) => {
-            if (err) throw (err);
+            if (err) throw err;
             console.log("You have added" + departmentData.newDept);
         })
     })

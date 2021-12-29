@@ -39,25 +39,37 @@ db.query(sql, params, (err, result) => {
 });
 
 // update an employee's information
-router.put("/employees/:id", (req, res) => {
-    const sql = "UPDATE employees SET role_id = ? WHERE id = ?";
-    const params = [req.body.role_id, req.params.id];
-
-    db.query(sql, params, (err, result) => {
-        if (err) {
-            res.status(400).json({ error: err.message });
-        } else if (!result.affectedRows) {
-            res.json({
-                message: "Employee not found"
-            });
-        } else {
-            res.json({
-                message: "success",
-                data: req.body,
-                changes: result.affectedRows
-            });
+function updateEmployee() {
+    return inquirer.prompt ([
+        {
+            type: "input",
+            name: "roleID",
+            message: "What is the ID of the employee you're tryig to update?"
+        },
+        {
+            type: "input",
+            name: "newRoleID",
+            message: "What is the name of the new role for your employee?"
         }
-    });
-});
+    ])
+
+    .then (employeeData => {
+        const data = [
+            {
+                role_id: employeeData.newRoleID
+            },
+            {
+                id: employeeData.roleID
+            }
+        ]
+        const sql = "UPDATE employees SET role_id = ? WHERE id = ?";
+
+    db.query(sql, data, (err, rows) => {
+        if (err) throw err;
+        console.log("You have updated the employee roles");
+    })
+})
+};
+
 
 module.exports = Employee;
