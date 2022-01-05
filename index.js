@@ -20,31 +20,31 @@ const startFunc = () => {
     .then(userChoice => {
         if (userChoice.chooseAction === "View all departments") {
             viewDept();
-            startFunc();
+            setTimeout(() =>  startFunc, 5000);
             console.log("Hit an arrow key to return to the selection menu.")
         } else if (userChoice.chooseAction === "View all roles") {
             viewRole();
-            startFunc();
+            setTimeout(() =>  startFunc, 5000);
             console.log("Hit an arrow key to return to the selection menu.")
         } else if (userChoice.chooseAction === "View all employees") {
             viewEmployee();
-            startFunc();
+            setTimeout(() =>  startFunc, 5000);
             console.log("Hit an arrow key to return to the selection menu.")
         } else if (userChoice.chooseAction === "Add a department") {
             addDept();
-            startFunc();
+            setTimeout(() =>  startFunc, 5000);
             console.log("Hit an arrow key to return to the selection menu.")
         } else if (userChoice.chooseAction === "Add a role") {
             addRole();
-            startFunc();
+            setTimeout(() =>  startFunc, 5000);
             console.log("Hit an arrow key to return to the selection menu.")
         } else if (userChoice.chooseAction === "Add an employee") {
             addEmployee();
-            startFunc();
+            setTimeout(() =>  startFunc, 5000);
             console.log("Hit an arrow key to return to the selection menu.")
         } else if (userChoice.chooseAction === "Update an employee role") {
             updateEmployee();
-            startFunc();
+            setTimeout(() =>  startFunc, 5000);
             console.log("Hit an arrow key to return to the selection menu.")
         } else 
             db.end();

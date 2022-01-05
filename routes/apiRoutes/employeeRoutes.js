@@ -1,6 +1,8 @@
-const express = require("express");
-const router = express.Router();
 const db = require("../../db/connection");
+const inquirer = require("inquirer");
+const cTable = require("console.table");
+
+
 
 
 // build the class
@@ -49,26 +51,26 @@ function updateEmployee() {
     return inquirer.prompt ([
         {
             type: "input",
-            name: "roleID",
-            message: "What is the ID of the employee you're tryig to update?"
+            name: "employeeId",
+            message: "What is the ID of the employee you're trying to update?"
         },
         {
             type: "input",
-            name: "newRoleID",
-            message: "What is the name of the new role for your employee?"
+            name: "newJobTitle",
+            message: "What is the name of the new job title for your employee?"
         }
     ])
 
     .then (employeeData => {
         const data = [
             {
-                role_id: employeeData.newRoleID
+                job_title: employeeData.newJobTitle
             },
             {
-                id: employeeData.roleID
+                id: employeeData.employeeId
             }
         ]
-        const sql = "UPDATE employees SET role_id = ? WHERE id = ?";
+        const sql = "UPDATE employees SET ? WHERE ?";
 
     db.query(sql, data, (err, rows) => {
         if (err) throw err;

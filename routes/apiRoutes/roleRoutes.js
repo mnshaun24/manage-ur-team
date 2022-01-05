@@ -1,6 +1,8 @@
-const express = require("express");
-const router = express.Router();
 const db = require("../../db/connection");
+const inquirer = require("inquirer");
+const cTable = require("console.table");
+
+
 
 // build the class
 class Role {

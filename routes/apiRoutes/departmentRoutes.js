@@ -1,5 +1,3 @@
-// const express = require("express");
-// const router = express.Router();
 const db = require("../../db/connection");
 const cTable = require("console.table");
 const inquirer = require("inquirer");
@@ -25,7 +23,7 @@ function viewDept() {
 
 // choose to add a department
 function addDept() {
-    return inquirer.prompt ([
+     inquirer.prompt ([
         {
             type: "input",
             name: "newDept",
