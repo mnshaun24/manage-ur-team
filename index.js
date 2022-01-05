@@ -1,9 +1,10 @@
 const inquirer = require("inquirer");
 const cTable = require("console.table");
 const Department = require("./routes/apiRoutes/departmentRoutes.js");
-// const Employee = require("./routes/apiRoutes/employeeRoutes.js");
+const Employee = require("./routes/apiRoutes/employeeRoutes.js");
 // const Role = require("./routes/apiRoutes/roleRoutes.js");
 const { viewDept, addDept } = require("./routes/apiRoutes/departmentRoutes");
+const { viewEmployee, addEmployee, updateEmployee } = require("./routes/apiRoutes/employeeRoutes");
 const db = require("./db/connection.js");
 
 const startFunc = () => {
