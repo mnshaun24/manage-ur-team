@@ -17,7 +17,10 @@ class Employee {
 
 // chooses to view all employees
 function viewEmployee() {
-    const sql = `SELECT * FROM employees`;
+    const sql = `SELECT employees.*, 
+    departments.department_name AS department FROM employees
+    LEFT JOIN roles ON employees.role_id = roles.id
+    LEFT JOIN departments ON roles.department_id = departments.id;`
 
     db.query(sql, (err, rows) => {
         if (err) throw err;

@@ -17,7 +17,7 @@ class Role {
 function viewRole() {
     const sql = `SELECT roles.*, 
     departments.department_name AS department FROM roles 
-    LEFT JOIN department ON roles.department_id = department.id`;
+    LEFT JOIN departments ON roles.department_id = departments.id`;
 
     db.query(sql, (err, rows) => {
         if (err) throw err;
