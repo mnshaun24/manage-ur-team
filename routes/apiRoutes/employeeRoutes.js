@@ -33,17 +33,33 @@ function addEmployee() {
     return inquirer.prompt ([
         {
             type: "input",
-            name: "newEmployee",
-            message: "What is the name of the new employee?"
+            name: "newEmployeeFirstName",
+            message: "What is the first name of the new employee?"
+        },
+        {
+            type: "input",
+            name: "newEmployeeLastName",
+            message: "What is the last name of the new employee?"
+        },
+        {
+            type: "input",
+            name: "newEmployeeRole",
+            message: "What is the role # of the new employee?"
+        },
+        {
+            type: "input",
+            name: "newEmployeeManager",
+            message: "What is the manager ID of the new employee?"
         }
     ])
 
     .then (employeeData => {
-        const sql = `INSERT INTO employees (first_name, last_name, job_title) VALUES (?, ?, ?)`;
+        const sql = `INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?)`;
+        let sqlArray = [employeeData.newEmployeeFirstName, employeeData.newEmployeeLastName, employeeData.newEmployeeRole, employeeData.newEmployeeManager];
 
-        db.query(sql, employeeData.newEmployee, (err, res) => {
+        db.query(sql, sqlArray, (err, res) => {
             if (err) throw err;
-            console.log("You have added" + employeeData.newEmployee);
+            console.log("You have added " + employeeData.newEmployeeFirstName);
         })
     })
 };

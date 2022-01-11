@@ -1,3 +1,5 @@
+// this is not needed but kept in for future front end implementation
+
 // require necessary files
 const express = require('express');
 const db = require("./db/connection");

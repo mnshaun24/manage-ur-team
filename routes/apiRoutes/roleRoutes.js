@@ -37,15 +37,20 @@ function addRole() {
             type: "input",
             name: "newSalary",
             message: "What is the expected salary for this role?"
+        },
+        {
+            type: "input",
+            name: "newDeptRole",
+            message: "What is the expected department for this role?"
         }
     ])
 
     .then (roleData => {
-        const sql = `INSERT INTO employees (title, salary) VALUES (?, ?)`;
-
-        db.query(sql, roleData.newRole, (err, res) => {
+        const sql = `INSERT INTO roles (title, salary, department_id) VALUES (?,?,?)`;
+        let sqlArray = [roleData.newRole, roleData.newSalary, roleData.newDeptRole];
+        db.query(sql, sqlArray, (err, res) => {
             if (err) throw err;
-            console.log("You have added" + roleData.newRole);
+            console.log("You have added " + roleData.newRole);
         })
     })
 };
