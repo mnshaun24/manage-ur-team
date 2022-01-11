@@ -13,7 +13,7 @@ To practice SQL and MySQL applications and manipulating databases.
 * MySQL
 
 ## Live Application Link
-https://watch.screencastify.com/v/MsFTUfLaNJPSR0P2Ujgr
+https://watch.screencastify.com/v/xsEgs9wjGqwqoWTno9lZ
 
 ## Additional Notes
 Update: I have resubmitted this assignment after having fixed the bugs and errors I was unable to resolve previously. My commit message shows the resubmission commit.
